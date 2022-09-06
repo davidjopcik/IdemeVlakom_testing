@@ -22,7 +22,7 @@ exports.config = {
     
 
       reporters: [
-        'spec', [
+        'spec'/* , [
             'allure', {
                 outputDir: './reports/allure/allure-results'
             }
@@ -30,7 +30,7 @@ exports.config = {
             'json', {
                 outputDir: './reports/json/json-results'
             }
-        ]
+        ] */
     ],
 
 }

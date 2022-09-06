@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//*[@resource-id=\"sk.zssk.mobapp.android.dev:id/f_order_trains_train_name\" and contains(@text, \"EC \")]"
-}

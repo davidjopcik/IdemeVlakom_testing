@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//*[@resource-id=\"sk.zssk.mobapp.android.dev:id/a_order_pricing_segment_reservation_item_radio_button\" and (@text=\"miestenka (OZP miesto)\")]"
-}

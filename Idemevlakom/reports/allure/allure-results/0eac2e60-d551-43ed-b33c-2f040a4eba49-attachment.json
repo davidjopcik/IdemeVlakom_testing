@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@text=\"Čas na zakúpenie cestovného dokladu vypršal\"]"
+}

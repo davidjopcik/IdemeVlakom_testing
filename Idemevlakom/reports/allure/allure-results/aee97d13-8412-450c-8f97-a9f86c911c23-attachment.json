@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@resource-id=\"sk.zssk.mobapp.android.dev:id/a_search_results_summary\"]"
+}

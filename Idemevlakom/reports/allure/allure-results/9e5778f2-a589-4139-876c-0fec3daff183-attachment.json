@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@resource-id=\"sk.zssk.mobapp.android.dev:id/a_order_passenger_age_category_discount\"]"
+}

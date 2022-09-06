@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@resource-id=\"sk.zssk.mobapp.android.dev:id/f_shopping_cart_email_collapse_button\"]"
+}

@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@resource-id=\"sk.zssk.mobapp.android.dev:id/f_drawer_header_ca_or_lp_text\" and contains(@text, \"Prihlásiť do zákazníckeho konta ZSSK ID alebo vytvoriť lokálny profil\")]"
+}

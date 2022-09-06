@@ -1,0 +1,27 @@
+{
+  "actions": [
+    {
+      "action": "press",
+      "options": {
+        "element": "00000000-0000-0472-ffff-ffff00001f8b"
+      }
+    },
+    {
+      "action": "wait",
+      "options": {
+        "ms": 2500
+      }
+    },
+    {
+      "action": "moveTo",
+      "options": {
+        "element": "00000000-0000-0472-ffff-ffff00001f8b",
+        "x": 0,
+        "y": -797
+      }
+    },
+    {
+      "action": "release"
+    }
+  ]
+}

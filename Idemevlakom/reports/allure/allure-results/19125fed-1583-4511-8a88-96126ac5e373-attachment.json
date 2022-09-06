@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@text=\"Cestovné doklady pre zvolenú cestu už nie je možné zakúpiť.\"]"
+}

@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@text=\"Pri pokuse o nacenenie cestovných dokladov nastala chyba.\"]"
+}

@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@text=\"Mladý  16 - 25 r.\"]"
+}

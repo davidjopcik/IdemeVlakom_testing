@@ -1,0 +1,4 @@
+{
+  "using": "xpath",
+  "value": "//*[@text=\"Preukaz pre dieťa do 16 r.\"]"
+}

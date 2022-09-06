@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//*[@resource-id=\"sk.zssk.mobapp.android.dev:id/a_order_pricing_segment_class_item_radioButton\" and contains (@text, \"1. TRIEDA\")]"
-}

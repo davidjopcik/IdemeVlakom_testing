@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//*[@resource-id='sk.zssk.mobapp.android.dev:id/universal_bottom_navigation_panel_next_icon_text' and contains(@text, 'ĎALEJ (1/3)')]"
-}

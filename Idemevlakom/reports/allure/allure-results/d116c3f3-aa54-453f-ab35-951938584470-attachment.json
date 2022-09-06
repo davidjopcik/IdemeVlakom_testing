@@ -1,4 +1,0 @@
-{
-  "using": "-android uiautomator",
-  "value": "new UiSelector().className(\"android.widget.LinearLayout\").index(0).childSelector(new UiSelector().resourceId(\"sk.zssk.mobapp.android.dev:id/f_order_trains_item_to\"))"
-}

@@ -1,18 +1,17 @@
 export const UsersData_0_0 = [
     {
-        from: "Makov",
-        to: "Rajec",
-        trainType: "SC ",
-        name: "Kamil", lastname: "Mokrý",
+        from: "Poprad-Tatry",
+        to: "Bern",
+        trainType: "R 614 ",
+        name: "Nesync", lastname: "MCD",
         ageCategory: "mlady_16_25",
         discountCategory: "Bez zľavy",
-        classNumber: "1. TRIEDA",
-        reservation:  "miestenka (ľahký prístup)",
+        classNumber: "2. TRIEDA",
+        reservation:  "miestenka",
         freeShipping: false,
         registrationNumber: "",
-        orderTimeFrom: ""
     },  
-     {
+    /*  {
         from: "Trenčín",
         to: "Bratislava hl.st.",
         trainType: "R " ,
@@ -23,7 +22,7 @@ export const UsersData_0_0 = [
         discountCategory: "Preukaz ŤZP",
         orderTimeFrom: ""
     },  
-    /* 
+    
     {
         from: "Veľký Šariš",
         to: "Ťahanovce",

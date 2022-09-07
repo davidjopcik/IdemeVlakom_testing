@@ -116,7 +116,7 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
     it('Kontrola dokladov', async () => {
         console.log("----------------------- " + await trainDataArray[0]);
         console.log("----------------------- " + trainDataArrayMock[0]);
-        await CheckTickets.CheckTicket(UsersData_0_0, trainDataArrayMock)
+        await CheckTickets.CheckTicket(UsersData_0_0, trainDataArray)
         
 
     });

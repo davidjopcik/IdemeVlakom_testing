@@ -10,7 +10,6 @@ export const UsersData_3_1 = [
         discountCategory: "Preukaz pre žiaka/študenta",
         freeShipping: true,
         registrationNumber: "19359",
-        orderTimeFrom: ""
     },  
     {
         from: "Spišská Nová Ves",
@@ -21,7 +20,6 @@ export const UsersData_3_1 = [
         classNumber: "2. TRIEDA",
         reservation: "miestenka (OZP miesto)",
         discountCategory: "KLASIK RAILPLUS",
-        orderTimeFrom: ""
     },  
     {
         from: "Veľký Šariš",
@@ -30,10 +28,8 @@ export const UsersData_3_1 = [
         name: "Ján", lastname: "Široký",
         ageCategory: "dospely_62_69",
         classNumber: "2. TRIEDA",
-        reservation: "",
+        reservation: "bez rezervácie",
         discountCategory: "Preukaz pre občana od 62 r.",
-        orderTimeFrom: ""
-
     }, 
     {
         from: "Zvolen os.st.",
@@ -42,10 +38,8 @@ export const UsersData_3_1 = [
         name: "Ondrej", lastname: "Nízky",
         ageCategory: "dospely_70",
         classNumber: "2. TRIEDA",
-        reservation: "",
+        reservation: "bez rezervácie",
         discountCategory: "Preukaz ŤZP",
-        orderTimeFrom: ""
-
     },  
     {
         from: "Kysak",
@@ -56,8 +50,6 @@ export const UsersData_3_1 = [
         discountCategory: "Bez zľavy",
         classNumber: "2. TRIEDA",
         reservation: "miestenka (detské miesto)",
-        orderTimeFrom: ""
-
     },   
     {
         from: "Kysucké Nové Mesto",

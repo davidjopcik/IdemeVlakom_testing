@@ -18,13 +18,14 @@ config.capabilities = [{
 
         // ---- REGRES TESTS ----
         //'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_1.js',
+        'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_2.js',
 
         // ---- LOGIN TESTS -----
        /*  "Idemevlakom/tests/android/testcases/Logins/TC1_LoginLocalUser.js",
         "Idemevlakom/tests/android/testcases/Logins/TC2_LoginZsskAccount.js", */
 
         // ---- Buy Flow ----
-        'Idemevlakom/tests/android/testcases/TC_00_BuyFlow_JEDNORAZOVY.js',
+        //'Idemevlakom/tests/android/testcases/TC_00_BuyFlow_JEDNORAZOVY.js',
 
         //'Idemevlakom/tests/android/testcases/Oblubeni_cestujuci/TC_9_1_PridanieOC.js',
 

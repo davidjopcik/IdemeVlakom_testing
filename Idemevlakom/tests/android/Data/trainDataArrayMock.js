@@ -2,59 +2,58 @@ export let trainDataArrayMock = [
 
 {
     id: 1,
-    lastName: 'Mokrý',
-    name: 'Kamil',
-    trainFrom: 'Makov',
-    trainTimeDeparture: '9:40, 6.9.2022',
-    trainTo: 'Rajec'
+    lastName: 'Burke',
+    name: 'Evan',
+    trainFrom: 'Vrútky',
+    trainTimeDeparture: '17:07, 7.9.2022',
+    trainTo: 'Ružomberok'
 },
 {
     id:2,
-    lastName:'Malina',
-    name:'Radovan',
-    trainFrom:'Trenčín',
-    trainTimeDeparture:'13:26, 5.9.2022',
-    trainTo:'Bratislava hl.st.'
-},
-
+    lastName:'Jahoda',
+    name:'Zdenko',
+    trainFrom: 'Vrútky',
+    trainTimeDeparture: '17:07, 7.9.2022',
+    trainTo: 'Ružomberok'
+}, 
 {
 
     id:3,
-    lastName:'Široký',
-    name:'Ján',
-    trainFrom:'Veľký Šariš',
-    trainTimeDeparture: '12:30, 5.9.2022',
-    trainTo:'Ťahanovce'
+    lastName:'Holub',
+    name:'Dominik',
+    trainFrom: 'Vrútky',
+    trainTimeDeparture: '17:07, 7.9.2022',
+    trainTo: 'Ružomberok'
 },
 
 {
 
     id: 4,
-    lastName: 'Nízky',
+    lastName: 'Šťastný',
     name:'Ondrej',
-    trainFrom:'Zvolen os.st.',
-    trainTimeDeparture:'14:22, 5.9.2022',
-    trainTo:'Kremnické Bane'
+    trainFrom: 'Vrútky',
+    trainTimeDeparture: '17:07, 7.9.2022',
+    trainTo: 'Ružomberok'
 },
 
-/* {
+{
 
     id: 5,
-    lastName:'Zelený',
-    name:'Ján',
-    trainFrom:'Kysak',
-    trainTimeDeparture:'15:51, 31.8.2022',
-    trainTo:'Košice'
-}, */
+    lastName:'Smutný',
+    name:'Samuel',
+    trainFrom: 'Vrútky',
+    trainTimeDeparture: '17:07, 7.9.2022',
+    trainTo: 'Ružomberok'
+},
 
 {
 
     id:6,
-    lastName:'Modrý',
-    name:'Izidor',
-    trainFrom:'Kysucké Nové Mesto',
-    trainTimeDeparture:'16:23, 5.9.2022',
-    trainTo:'Žilina'
+    lastName:'Rybár',
+    name:'Drahoslav',
+    trainFrom: 'Vrútky',
+    trainTimeDeparture: '17:07, 7.9.2022',
+    trainTo: 'Ružomberok'
 }
 
 ]

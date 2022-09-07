@@ -41,13 +41,8 @@ class OrderPassenger {
     async addOrderToPassenger(dog, baggage, bicycle, serviceOnly) {
 
         await this.addOrderToPassengerwithoutNext(dog, baggage, bicycle, serviceOnly)
-
-        await TicketSelection.nextBtn_1_3.click()
-        await TicketSelection.nextBtn_2_3.waitForDisplayed({ timeout: 40000 })
-        await FailsErrors.nextBtn1_3_Err()
+        await this.addOrderToPassengerNextStep(dog, baggage, bicycle)
         
-
-        await this.chceckOrderName(dog, baggage, bicycle)
     }
 
     async addOrderToPassengerwithoutNext(dog, baggage, bicycle, serviceOnly){
@@ -81,6 +76,15 @@ class OrderPassenger {
             await Swipe.swipeUp()
             await this.serviceOnlyCheckBox.click()
         }
+    }
+
+    async addOrderToPassengerNextStep(dog, baggage, bicycle){
+        await TicketSelection.nextBtn_1_3.click()
+        await TicketSelection.nextBtn_2_3.waitForDisplayed({ timeout: 40000 })
+        await FailsErrors.nextBtn1_3_Err()
+        
+
+        await this.chceckOrderName(dog, baggage, bicycle)
     }
 
 

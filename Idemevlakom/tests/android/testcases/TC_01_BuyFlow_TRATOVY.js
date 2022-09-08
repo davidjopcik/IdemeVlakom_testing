@@ -1,5 +1,5 @@
 import AddPassenger from "../Methods/AddPassenger";
-import CheckTickets, { checkTrainTime } from "../Methods/CheckTickets";
+import CheckTickets, { checkTrainTime, trainDataArray } from "../Methods/CheckTickets";
 import HomeScreen from "../Methods/HomeScreen";
 import OpenApp from "../Methods/OpenApp";
 import OrderPassengers from "../Methods/OrderPassengers";
@@ -40,7 +40,8 @@ export let passenger =
         });
      
         it('Kontrola dát - Od, Do, Dátum, Čas', async () => {
-            await CheckTickets.ChecktrainTimeDateTratovy()
+            await CheckTickets.ChecktrainTimeDateTratovy(passenger)
+            console.log(trainDataArray[0]);
         });
     
         it('Pridanie cestujúceho', async () => {

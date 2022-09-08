@@ -73,6 +73,8 @@ class Search {
         //Kliknutie na hľadať
         await this.searchBtnTratovy.click()
 
+        //Platnosť od
+
         // //Ak nenašiel stanicu a zobrazil sa snackbar
         if (!await SearchResult.searchResultSumaryTratovy.isDisplayed()) {
             await this.searchTratovy(from, to, trainType)

@@ -50,7 +50,12 @@ class CheckTickets {
     }
     get nameInTicket() {
         return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_tickets_ticket_name"]')
-
+    }
+    get trainFromTratovy(){
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_order_line_item_from"]')
+    }
+    get trainToTratovy(){
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_order_line_item_to"]')
     }
 
 
@@ -252,12 +257,42 @@ class CheckTickets {
 
 
 
-    async ChecktrainTimeDateTratovy() {
+    async ChecktrainTimeDateTratovy(userData) {
+        await this.ChecktrainTimeDateTratovyOnly(userData)
+        await this.PushDataToTrainDataArrayTratovy(userData)
+
+        
+    }
+
+    async ChecktrainTimeDateTratovyOnly(userData){
+        expect(await this.trainFromTratovy.getText()).toEqual(userData.from)
+        expect(await this.trainToTratovy.getText()).toEqual(userData.to)
+
         checkTrainDateTratovySelector = await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/a_order_appbar_date"]').getText()
         checkTrainDateTratovySplit = checkTrainDateTratovySelector.split(" ")[1].concat(" ", "-")
     }
 
-    async findTicketResultTratovy(ticketName, ticketLastName) {
+    async PushDataToTrainDataArrayTratovy(userData){
+        //Vytvorenie objektu s dátami z obrazovky
+        trainDataCheck = {}
+        trainDataCheck.id = firstIdIntrainDataArray
+        trainDataCheck.name = userData.name
+        trainDataCheck.lastName = userData.lastname
+        trainDataCheck.trainFrom = await this.trainFromTratovy.getText()
+        trainDataCheck.trainTo = await this.trainToTratovy.getText()
+        trainDataCheck.trainTimeDeparture = await checkTrainDateTratovySplit
+
+        //push dát z obrazovky do poľa
+        trainDataArray.push(trainDataCheck)
+
+        expect(await userData.from).toEqual(trainDataCheck.trainFrom)
+        expect(await userData.to).toEqual(trainDataCheck.trainTo)
+
+        isEmptyTrainDataArray = false
+        firstIdIntrainDataArray += 1
+    }
+
+    async findTicketResultTratovy(userData, i) {
 
         while (!await this.ticketItemTimeDate.isDisplayed()) {
             for (indexOfDates = 1; indexOfDates < 5; indexOfDates++) {
@@ -287,9 +322,9 @@ class CheckTickets {
                     await currentItemTimeDate.click()
 
                     //Kontrola Mena a priezviska v Aktuálnych cestách
-                    await this.CheckName(ticketName, ticketLastName)
+                    await this.CheckName(i)
 
-                    if (await passengerItemName == (ticketName + " " + ticketLastName)) {
+                    if (await passengerItemName == (i.ticketName + " " + i.ticketLastName)) {
                         return
                     }
                 }

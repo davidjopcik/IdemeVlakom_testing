@@ -6,7 +6,7 @@ export const UsersData_3_1 = [
         name: "Ján", lastname: "Cisárik",
         ageCategory: "mlady_16_25",
         classNumber: "2. TRIEDA",
-        reservation: "",
+        reservation: "bez miestenky",
         discountCategory: "Preukaz pre žiaka/študenta",
         freeShipping: true,
         registrationNumber: "19359",

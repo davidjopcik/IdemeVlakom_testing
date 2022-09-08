@@ -31,7 +31,7 @@ describe('TC 3.1 - 6 lístkov, 6 cestujúcich, rôzne zľavové kategórie', () 
         });
 
         it('Vyľadanie spojenie', async () => {
-            await Search.search(e.from, e.to, 1)
+            await Search.search(e.from, e.to, 3)
         });
 
         it('Výber konkrétneho spojenia', async () => {

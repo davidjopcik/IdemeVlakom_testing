@@ -13,8 +13,6 @@ export let currentItemTimeDate2
 export let currentItemTimeDate3
 export let indexOfDates
 export let passengerItemName
-export let checkTrainDateTratovySelector
-export let checkTrainDateTratovySplit
 export let secondTrainColumn
 export let trainDataArray = []
 export let isEmptyTrainDataArray = true
@@ -23,9 +21,11 @@ export let ticketIdarray = []
 export let ticketIdTmp
 export let numberOfSwipes
 export let timeDepartureInTicket
-export let trainFromTmp 
-export let trainToTmp 
+export let trainFromTmp
+export let trainToTmp
 export let trainDataCheck = {}
+export let checkTrainDateTratovySelector
+export let checkTrainDateTratovySplit
 
 
 class CheckTickets {
@@ -36,6 +36,12 @@ class CheckTickets {
     get showTickets() {
         return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_route_passengers_show_valid_tickets"]')
     }
+    get trainFromTratovy() {
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_order_line_item_from"]')
+    }
+    get trainToTratovy() {
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_order_line_item_to"]')
+    }
     /* get passengerItemName() {
         return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_route_passengers_item_name"]').getText()
     } */
@@ -45,17 +51,14 @@ class CheckTickets {
     get ticketValidityFrom() {
         return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_ticket_validity_from"]')
     }
+    get ticketValidityTo() {
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_ticket_validity_to"]')
+    }
     get ticketId() {
         return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_tickets_ticket_id"]')
     }
     get nameInTicket() {
         return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_tickets_ticket_name"]')
-    }
-    get trainFromTratovy(){
-        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_order_line_item_from"]')
-    }
-    get trainToTratovy(){
-        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_order_line_item_to"]')
     }
 
 
@@ -70,7 +73,7 @@ class CheckTickets {
         trainDataCheck.id = firstIdIntrainDataArray
         trainDataCheck.name = userData.name
         trainDataCheck.lastName = userData.lastname
-        trainDataCheck.trainFrom =trainFromTmp
+        trainDataCheck.trainFrom = trainFromTmp
         trainDataCheck.trainTo = trainToTmp
         trainDataCheck.trainTimeDeparture = (await checkTrainTime + ", " + await checkTrainDate)
 
@@ -84,7 +87,7 @@ class CheckTickets {
         firstIdIntrainDataArray += 1
     }
 
-    async ChecktrainTimeDateOnly(userData){
+    async ChecktrainTimeDateOnly(userData) {
 
         //Kontrola dát Z a Do(Aj ak je viac segmentov)
         while (!await $('//*[@text="Spojenie"]').isDisplayed()) {
@@ -127,7 +130,12 @@ class CheckTickets {
             await this.nameInTicket.waitForDisplayed()
 
             ///////////////////////////////////////////TO DO To Do to do //////////////////////////////
-            timeDepartureInTicket = await BasicFunction.removeZeroFromStart(await this.ticketItemTimeDate.getText())
+            if (await userData[j].isTratovy) {
+                timeDepartureInTicket = await BasicFunction.removeZeroFromStart(await this.ticketValidityFrom.getText()) + " - " + await this.ticketValidityTo.getText()
+            }
+            else {
+                timeDepartureInTicket = await BasicFunction.removeZeroFromStart(await this.ticketItemTimeDate.getText())
+            }
             console.log(timeDepartureInTicket);
             ticketIdTmp = ""
             while ((await timeDepartureInTicket !== await i.trainTimeDeparture) || (await this.nameInTicket.getText() !== (await i.name + " " + await i.lastName))) {
@@ -200,12 +208,12 @@ class CheckTickets {
 
                     //Kontrola Mena a priezviska v Aktuálnych cestách
                     await this.CheckName(i)
-                    
+
                     if (await passengerItemName == (i.name + " " + i.lastName)) {
                         console.log("------------------------- " + await passengerItemName);
 
                         expect(await passengerItemName).toEqual(await userData[j].name + " " + await userData[j].lastname)
-                        console.log("------------- " + userData[j].name + " " + await userData[j].lastname);
+                        console.log("------------- " + await userData[j].name + " " + await userData[j].lastname);
                         return
                     }
                 }
@@ -223,13 +231,13 @@ class CheckTickets {
         if (!await $('//*[@text="Zobraziť doklady"]').isDisplayed()) {
             await Swipe.swipeElement0nTop(await $('//*[@text="Cestujúci"]'))
         }
-        if(!await $('//*[@text="'+i.name + " " + i.lastName+'"]').isDisplayed()){
+        if (!await $('//*[@text="' + i.name + " " + i.lastName + '"]').isDisplayed()) {
             await HomeScreen.navigateUp.click()
             indexOfDates += 1
             return
         }
-        passengerItemName = await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_route_passengers_item_name" and contains (@text, "'+i.name + " " + i.lastName+'")]').getText()
-        
+        passengerItemName = await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_route_passengers_item_name" and contains (@text, "' + i.name + " " + i.lastName + '")]').getText()
+
         if (await passengerItemName !== (i.name + " " + i.lastName)) {
             await HomeScreen.navigateUp.click()
             return
@@ -238,24 +246,6 @@ class CheckTickets {
 
 
     }
-
-    async CheckTrainName() {
-        expect(await AddPassenger.FromResult.getText()).toEqual(passenger.from)
-        if (!await AddPassenger.secondTrainExist.isExisting()) {
-            expect(await AddPassenger.ToResult.getText()).toEqual(passenger.to)
-        }
-        else {
-            expect(await AddPassenger.secondTrainExist.getText()).toEqual(passenger.to)
-        }
-
-    }
-    async CheckTrainTimeDateNames() {
-
-    }
-
-
-
-
 
     async ChecktrainTimeDateTratovy(userData) {
         await this.ChecktrainTimeDateTratovyOnly(userData)
@@ -270,6 +260,17 @@ class CheckTickets {
 
         checkTrainDateTratovySelector = await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/a_order_appbar_date"]').getText()
         checkTrainDateTratovySplit = checkTrainDateTratovySelector.split(" ")[1].concat(" ", "-")
+        
+        
+        
+        
+        // -------------- TO DO ------------------------
+       
+
+
+
+
+
     }
 
     async PushDataToTrainDataArrayTratovy(userData){
@@ -292,62 +293,23 @@ class CheckTickets {
         firstIdIntrainDataArray += 1
     }
 
-    async findTicketResultTratovy(userData, i) {
 
-        while (!await this.ticketItemTimeDate.isDisplayed()) {
-            for (indexOfDates = 1; indexOfDates < 5; indexOfDates++) {
-                currentItemTimeDate = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[' + indexOfDates + ']/android.view.ViewGroup/android.widget.TextView[1]')
 
-                while (!await currentItemTimeDate.isDisplayed()) {
-                    Swipe.swipeUpMin()
-                }
-
-                //Ak je 0 na začiatku reťazca(rozdielny čas v aktualnych cestách)
-                let currentItemTimeDateString = await currentItemTimeDate.getText()
-
-                if (await currentItemTimeDateString.charAt(0) == "0") {
-                    currentItemTimeDateString = currentItemTimeDateString.substring(1)
-                }
-
-                while (!await currentItemTimeDate.isDisplayed()) {
-                    Swipe.swipeUpMin()
-                }
-                //
-
-                let currentItemTimeDateStringSplit = currentItemTimeDateString.split(" ")[0].concat(" ", currentItemTimeDateString.split(" ")[1])
-                if (await currentItemTimeDateStringSplit == checkTrainDateTratovySplit) {
-
-                    //Kontrola času a dátumu v "Aktuálne cesty" a otvorenie aktuálnej cesty
-                    expect(await currentItemTimeDate.getText()).toContain((await checkTrainDateTratovySplit))
-                    await currentItemTimeDate.click()
-
-                    //Kontrola Mena a priezviska v Aktuálnych cestách
-                    await this.CheckName(i)
-
-                    if (await passengerItemName == (i.ticketName + " " + i.ticketLastName)) {
-                        return
-                    }
-                }
-            }
-            await Swipe.swipeUp()
+    async CheckTrainName() {
+        expect(await AddPassenger.FromResult.getText()).toEqual(passenger.from)
+        if (!await AddPassenger.secondTrainExist.isExisting()) {
+            expect(await AddPassenger.ToResult.getText()).toEqual(passenger.to)
         }
-    }
-
-    async CheckTicketTratovy(ticketName, ticketLastName) {
-        //Vyhľadanie konkrétneho lístka v Aktuálne cesty
-        await this.findTicketResultTratovy(ticketName, ticketLastName)
-
-        //Otvorenie dokladu a kontrola času a dátumu na cestovnom lístku
-        if (!await this.showTickets.isDisplayed()) {
-            await Swipe.swipeUp()
+        else {
+            expect(await AddPassenger.secondTrainExist.getText()).toEqual(passenger.to)
         }
 
-        // Klik na Otvoriť doklady a kontrola mena a času
-        await this.showTickets.click()
-        expect(await checkTrainDateTratovySplit).toContain(await this.ticketValidityFrom.getText())
-        //expect(await this.ticketValidityFrom.getText()).toContain(await checkTrainDateTratovySplit)
+    }
+    async CheckTrainTimeDateNames() {
 
     }
+
+
 
 }
 

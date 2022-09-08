@@ -2,13 +2,13 @@ export let trainDataArrayMock = [
 
 {
     id: 1,
-    lastName: 'Burke',
-    name: 'Evan',
-    trainFrom: 'Vrútky',
-    trainTimeDeparture: '17:07, 7.9.2022',
-    trainTo: 'Ružomberok'
+    lastName: 'Zelený',
+    name: 'Ján',
+    trainFrom: 'Trenčín',
+    trainTimeDeparture: '8.9.2022 - 7.10.2022 24:00',
+    trainTo: 'trnava'
 },
-{
+/* {
     id:2,
     lastName:'Jahoda',
     name:'Zdenko',
@@ -54,6 +54,6 @@ export let trainDataArrayMock = [
     trainFrom: 'Vrútky',
     trainTimeDeparture: '17:07, 7.9.2022',
     trainTo: 'Ružomberok'
-}
+} */
 
 ]

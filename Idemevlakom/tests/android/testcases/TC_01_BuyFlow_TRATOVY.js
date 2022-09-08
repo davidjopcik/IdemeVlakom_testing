@@ -1,5 +1,8 @@
+import { trainDataArrayMock } from "../Data/trainDataArrayMock";
 import AddPassenger from "../Methods/AddPassenger";
+import BasicFunction from "../Methods/BasicFunction";
 import CheckTickets, { checkTrainTime, trainDataArray } from "../Methods/CheckTickets";
+import CheckTicketsTratovy from "../Methods/CheckTicketsTratovy";
 import HomeScreen from "../Methods/HomeScreen";
 import OpenApp from "../Methods/OpenApp";
 import OrderPassengers from "../Methods/OrderPassengers";
@@ -9,7 +12,8 @@ import Search from "../Methods/Search";
 import TicketSelection from "../Methods/TicketSelection";
 
 
-export let passenger =
+export let passengerData =
+[
 {
     from: "Trenčín",
     to: "Trnava",
@@ -24,9 +28,11 @@ export let passenger =
     //dog: "1",
     //baggage: "1",
     bicycle: "1",
-    serviceOnly: true
+    serviceOnly: true,
+    isTratovy: true,
 }
-
+]
+export let passenger = passengerData[0]
 
     describe(' '+ passenger.name + passenger.lastname + ' Nákup TRAŤOVÉHO líska a kontrola vygenerovania do sekcie "Aktuálne cesty"', () => {
         
@@ -75,8 +81,13 @@ export let passenger =
     
         it('Kontrola dokladov', async () => {
             //expect(currentItemTimeDate).toBeDisplayed()
-            await CheckTickets.CheckTicketTratovy(passenger.name, passenger.lastname)
+            await CheckTickets.CheckTicket(passenger, trainDataArray)
     
+        });
+
+
+        it.only('Date Test',async () => {
+            await BasicFunction.date()
         });
     }); 
     

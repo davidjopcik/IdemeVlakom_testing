@@ -15,8 +15,8 @@ import TicketSelection from "../Methods/TicketSelection";
 export let passengerData =
 [
 {
-    from: "Trenčín",
-    to: "Trnava",
+    from: "Čadca",
+    to: "Žilina",
     trainType: "Os",
     name: "Ján", lastname: "Zelený",
     ageCategory: "dospely_26_61",
@@ -81,12 +81,13 @@ export let passenger = passengerData[0]
     
         it('Kontrola dokladov', async () => {
             //expect(currentItemTimeDate).toBeDisplayed()
-            await CheckTickets.CheckTicket(passenger, trainDataArray)
+            console.log(trainDataArray[0]);
+            await CheckTickets.CheckTicket(passengerData, trainDataArray)
     
         });
 
 
-        it.only('Date Test',async () => {
+        xit('Date Test',async () => {
             await BasicFunction.date()
         });
     }); 

@@ -9,21 +9,23 @@ class BasicFunctions {
         return item
     }
 
-    async date() {
+    async date(dateFromTrattovy, validityTime) {
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        let trainTimeDeparture = '8.9.2022'
-        let MonthSplit = trainTimeDeparture.split(".")
-        console.log(MonthSplit);
-        console.log(months[trainTimeDeparture.split(".")[0] - 1]);
+        let trainTimeDeparture = dateFromTrattovy
 
-        const event = new Date(''+months[trainTimeDeparture.split(".")[0] - 1] +' '+trainTimeDeparture.split(".")[1]+', '+trainTimeDeparture.split(".")[2]+'');
+        console.log(''+ months[parseInt(trainTimeDeparture.split(".")[1]) - 1] +' '+trainTimeDeparture.split(".")[0]+', '+trainTimeDeparture.split(".")[2]+'');
 
-        //event.setDate(24);
+        let dateFrom = new Date(''+ months[parseInt(trainTimeDeparture.split(".")[1]) - 1] +' '+trainTimeDeparture.split(".")[0]+', '+trainTimeDeparture.split(".")[2]+'');
+        let dateTo = new Date(''+ months[parseInt(trainTimeDeparture.split(".")[1]) - 1] +' '+trainTimeDeparture.split(".")[0]+', '+trainTimeDeparture.split(".")[2]+'');
 
-        console.log(event.getDay() + "." + event.getMonth()+ "." + event.getFullYear());
-       
-        event.setDate(31);
-        console.log(event.getDate());
+        //let trainTimeValidityTo = dateTo.setDate(dateTo.getDate() + 7)
+        let trainTimeValidityTo = dateTo.getDate(dateTo.setDate(dateTo.getDate() + validityTime)) + "." + (dateTo.getUTCMonth()+ 1) + "." + dateTo.getFullYear()
+        let trainTimeDepartureDateType = dateFrom.getDate() + "." + (dateFrom.getUTCMonth() + 1) + "." + dateFrom.getFullYear()
+        
+        let validityDays = trainTimeDepartureDateType + " - " + trainTimeValidityTo
+        console.log(validityDays);;
+       return validityDays
+        
 
     }
 

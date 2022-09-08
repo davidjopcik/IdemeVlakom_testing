@@ -26,6 +26,7 @@ export let trainToTmp
 export let trainDataCheck = {}
 export let checkTrainDateTratovySelector
 export let checkTrainDateTratovySplit
+export let checkTrainDateValidity
 
 
 class CheckTickets {
@@ -259,7 +260,8 @@ class CheckTickets {
         expect(await this.trainToTratovy.getText()).toEqual(userData.to)
 
         checkTrainDateTratovySelector = await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/a_order_appbar_date"]').getText()
-        checkTrainDateTratovySplit = checkTrainDateTratovySelector.split(" ")[1].concat(" ", "-")
+        checkTrainDateValidity = await BasicFunction.date(checkTrainDateTratovySelector.split(" ")[1], 29) + " 24:00"
+        console.log(checkTrainDateValidity);
         
         
         
@@ -281,7 +283,7 @@ class CheckTickets {
         trainDataCheck.lastName = userData.lastname
         trainDataCheck.trainFrom = await this.trainFromTratovy.getText()
         trainDataCheck.trainTo = await this.trainToTratovy.getText()
-        trainDataCheck.trainTimeDeparture = await checkTrainDateTratovySplit
+        trainDataCheck.trainTimeDeparture = await checkTrainDateValidity
 
         //push dát z obrazovky do poľa
         trainDataArray.push(trainDataCheck)

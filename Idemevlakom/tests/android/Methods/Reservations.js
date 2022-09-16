@@ -36,8 +36,6 @@ class Reservations {
 
     }
 
-
-
     async selectReservation(from, to, ticketReservation, serviceReservation, MCDType) {
         //Wait for text
         while (!await $('//*[@text="' + from + '"]').isDisplayed()) {
@@ -119,6 +117,14 @@ class Reservations {
         }
         expect(await Reservations_Methods.SelectMCDTicketSelector).toBeDisplayed()
 
+    }
+
+    async selectValidity(validity){
+        await $('//*[@text="' + validity + '"]').click()
+    }
+
+    async selectWayType(wayType){
+        await $('//*[@text="' + wayType + '"]').click()
     }
 
 

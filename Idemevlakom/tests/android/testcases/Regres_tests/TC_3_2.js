@@ -10,16 +10,19 @@ import Reservations from "../../Methods/Reservations";
 import { isTicketClass, isTicketReservation } from "../../Methods/Reservations_Methods";
 import Search from "../../Methods/Search";
 import SearchResult from "../../Methods/SearchResult";
-import Swipe from "../../Methods/Swipe";
 import TicketSelection from "../../Methods/TicketSelection";
+const allureReporter = require('@wdio/allure-reporter').default
+
 
 let e = UsersData_TC_3_2[0]
 export let numberOfPushes = 0
 
-describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktuálne cesty"', () => {
+describe('TC 3.2 - Nákup 1 lístka pre 6 cestujúcich, rôzne zľavové kategórie', () => {
 
     it('otvorenie app', async () => {
         await OpenApp.restarteApp()
+        allureReporter.addDescription('TC 3.2')
+
     });
 
     it('Odstránenie užívateľa ak je prihlásený', async () => {

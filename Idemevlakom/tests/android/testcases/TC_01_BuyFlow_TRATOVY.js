@@ -2,8 +2,6 @@ import { trainDataArrayMock } from "../Data/trainDataArrayMock";
 import AddPassenger from "../Methods/AddPassenger";
 import BasicFunction from "../Methods/BasicFunction";
 import CheckTickets, { checkTrainTime, trainDataArray } from "../Methods/CheckTickets";
-import CheckTicketsTratovy from "../Methods/CheckTicketsTratovy";
-import HomeScreen from "../Methods/HomeScreen";
 import OpenApp from "../Methods/OpenApp";
 import OrderPassengers from "../Methods/OrderPassengers";
 import Payment from "../Methods/Payment";
@@ -15,14 +13,16 @@ import TicketSelection from "../Methods/TicketSelection";
 export let passengerData =
 [
 {
-    from: "Čadca",
-    to: "Žilina",
+    from: "Žilina",
+    to: "Oščadnica",
     trainType: "Os",
     name: "Ján", lastname: "Zelený",
     ageCategory: "dospely_26_61",
     discountCategory: "Bez zľavy",
     classNumber: "2",
     reservation: "bez miestenky",
+    WayType: "Spiatočný",
+    Validity: "Týždenný",
     //firstClass: "miestenka",
 
     //dog: "1",
@@ -67,7 +67,7 @@ export let passenger = passengerData[0]
         it('Voľba lístka - výber miestenky', async () => {
             await TicketSelection.nextBtn_2_3.waitForDisplayed({ timeout: 60000, })
             //Výber miestenky
-            //await Reservations.selectReservation(passenger.classNumber, passenger.reservation )
+            await Reservations.selectValidity(passenger.Validity)
     
             await TicketSelection.nextBtn_2_3.click()
             await TicketSelection.nextBtn_3_3.waitForDisplayed({ timeout: 60000, })

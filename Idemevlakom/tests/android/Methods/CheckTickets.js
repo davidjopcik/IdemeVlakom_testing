@@ -27,6 +27,9 @@ export let trainDataCheck = {}
 export let checkTrainDateTratovySelector
 export let checkTrainDateTratovySplit
 export let checkTrainDateValidity
+export let validityTime
+export let numberOfItems
+export let index = 1
 
 
 class CheckTickets {
@@ -68,6 +71,8 @@ class CheckTickets {
         await this.PushDataToTrainDataArray(userData)
     }
 
+
+
     async PushDataToTrainDataArray(userData) {
         //Vytvorenie objektu s dátami z obrazovky
         trainDataCheck = {}
@@ -91,7 +96,7 @@ class CheckTickets {
     async ChecktrainTimeDateOnly(userData) {
 
         //Kontrola dát Z a Do(Aj ak je viac segmentov)
-        while (!await $('//*[@text="Spojenie"]').isDisplayed()) {
+        while (!await $('//*[contains (@text, "Spojeni")]').isDisplayed()) {
             Swipe.swipeDown()
         }
 
@@ -112,6 +117,7 @@ class CheckTickets {
     async RemoveLastChecktrainTimeData() {
         await trainDataArray.pop()
     }
+
 
     //Kontrola dát konkrétneho lístka v sekcii "Aktuálne cesty"
     async CheckTicket(userData, trainData) {
@@ -184,6 +190,25 @@ class CheckTickets {
             currentItemTimeDate = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[1]')
             await Swipe.swipeElement0nTopActualWay(await currentItemTimeDate)
 
+
+
+
+
+
+
+
+             let counter = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[' + index + ']/android.view.ViewGroup/android.widget.TextView[1]')
+            let numberOfItems = 0
+            while(await counter.isDisplayed()){  
+                index += 1
+                numberOfItems +=1
+                counter = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[' + index + ']/android.view.ViewGroup/android.widget.TextView[1]')
+            } 
+            
+
+
+
+
             for (indexOfDates = 1; indexOfDates < 5; indexOfDates++) {
                 currentItemTimeDate = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[' + indexOfDates + ']/android.view.ViewGroup/android.widget.TextView[1]')
                 //await Swipe.swipeElement0nTopActualWay(await currentItemTimeDate)
@@ -218,9 +243,15 @@ class CheckTickets {
                         return
                     }
                 }
+            console.log(await currentItemTimeDate.getText());
+
             }
+            console.log(indexOfDates);
+            console.log(await currentItemTimeDate.getText());
+
             await Swipe.swipeElement0nTopActualWay(await currentItemTimeDate)
             numberOfSwipes += 1
+            index = 1
         }
     }
 
@@ -260,7 +291,15 @@ class CheckTickets {
         expect(await this.trainToTratovy.getText()).toEqual(userData.to)
 
         checkTrainDateTratovySelector = await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/a_order_appbar_date"]').getText()
-        checkTrainDateValidity = await BasicFunction.date(checkTrainDateTratovySelector.split(" ")[1], 29) + " 24:00"
+        
+        if(await userData.validity == "Mesačný"){
+            validityTime = 29
+        }
+        else{
+            validityTime = 6
+        }
+        checkTrainDateValidity = await BasicFunction.date(checkTrainDateTratovySelector.split(" ")[1], validityTime) + " 24:00"
+
         console.log(checkTrainDateValidity);
         
         
@@ -294,24 +333,6 @@ class CheckTickets {
         isEmptyTrainDataArray = false
         firstIdIntrainDataArray += 1
     }
-
-
-
-    async CheckTrainName() {
-        expect(await AddPassenger.FromResult.getText()).toEqual(passenger.from)
-        if (!await AddPassenger.secondTrainExist.isExisting()) {
-            expect(await AddPassenger.ToResult.getText()).toEqual(passenger.to)
-        }
-        else {
-            expect(await AddPassenger.secondTrainExist.getText()).toEqual(passenger.to)
-        }
-
-    }
-    async CheckTrainTimeDateNames() {
-
-    }
-
-
 
 }
 

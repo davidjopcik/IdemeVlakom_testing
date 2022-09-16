@@ -1,13 +1,14 @@
 export const UsersData_0_0 = [
     {
-        from: "Poprad-Tatry",
-        to: "Bern",
-        trainType: "R 614 ",
-        name: "Nesync", lastname: "MCD",
+        from: "Vrbovce",
+        to: "Lipov ",
+        trainType: "Os ",
+        name: "Peter", lastname: "Lipovy",
         ageCategory: "mlady_16_25",
         discountCategory: "Bez zľavy",
         classNumber: "2. TRIEDA",
-        reservation:  "miestenka",
+        reservation:  "miestenka -spiatočný",
+
         freeShipping: false,
         registrationNumber: "",
     },  

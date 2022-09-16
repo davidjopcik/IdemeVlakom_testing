@@ -4,9 +4,9 @@ export let trainDataArrayMock = [
     id: 1,
     lastName: 'Zelený',
     name: 'Ján',
-    trainFrom: 'Trenčín',
-    trainTimeDeparture: '8.9.2022 - 7.10.2022 24:00',
-    trainTo: 'trnava'
+    trainFrom: 'Oščadnica',
+    trainTimeDeparture: '9.9.2022 - 15.9.2022 24:00',
+    trainTo: 'Žilina'
 },
 /* {
     id:2,

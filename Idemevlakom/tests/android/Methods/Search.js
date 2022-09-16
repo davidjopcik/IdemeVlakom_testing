@@ -1,5 +1,8 @@
 import HomeScreen from "./HomeScreen"
 import SearchResult from "./SearchResult"
+import Swipe from "./Swipe"
+
+export let isResultUp = false
 
 class Search {
     get searchFrom() {
@@ -64,6 +67,7 @@ class Search {
         await browser.pause(1000)
         await this.searchToTratovy.click()
 
+
         //Zadanie cieľovej stanice
         await this.searchToTratovy.click()
         await this.searchToTratovy.setValue(to)
@@ -96,7 +100,15 @@ class Search {
         await this.searchTo.click()
         await this.searchTo.setValue(to)
         await browser.pause(1000)
+        if(isResultUp){
+            await $('//*[@text="JEDNORAZOVÝ"]').click()
+        }
         await this.searchToResult.click()
+        if(await $('//*[@resource-id="android:id/date_picker_header_date"]').isDisplayed()){
+            await $('//*[@text="ZRUŠIŤ"]').click()
+            isResultUp = true
+        }
+
 
         //Čas odchodu
         console.log("------------------" + hours);

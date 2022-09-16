@@ -22,15 +22,17 @@ exports.config = {
     
 
       reporters: [
-        'spec'/* , [
+        'spec' , [
             'allure', {
-                outputDir: './reports/allure/allure-results'
+                outputDir: './reports/allure/allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: true,
             }
         ], [
             'json', {
                 outputDir: './reports/json/json-results'
             }
-        ] */
+        ] 
     ],
 
 }

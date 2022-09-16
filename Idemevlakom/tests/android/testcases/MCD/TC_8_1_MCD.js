@@ -12,12 +12,17 @@ import { default as Search } from "../../Methods/Search";
 import { default as SearchResult } from "../../Methods/SearchResult";
 import { default as ShoppingCart } from "../../Methods/ShoppingCart";
 import { default as TicketSelection } from "../../Methods/TicketSelection";
+const allureReporter = require('@wdio/allure-reporter').default
 
 
-describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktuálne cesty"', () => {
+
+describe('TC 8.1 - Nákup 6 MCD pre 6 cestujúcich, rôzne zľavové kategórie', () => {
 
     it('otvorenie app', async () => {
         await OpenApp.restarteApp()
+        allureReporter.startStep('Start step')
+        allureReporter.addDescription('TC 8.1')
+
     });
 
     it('Odstránenie užívateľa ak je prihlásený', async () => {
@@ -28,15 +33,19 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
         it('Pridanie cesty pri viacerých cestujúcich ' + e.from + e.to + ' ', async () => {
             while (await Payment.toPayBottomSelector.isDisplayed()) {
                 await ShoppingCart.AddWay()
+        allureReporter.addIssue('IVM_45')
+
             }
         });
 
         it('Vyhľadanie spojenia ' + e.from + ' - ' + e.to + '', async () => {
             await Search.search(e.from, e.to, 1)
+
         });
 
         it('Výber konkrétneho spojenia', async () => {
             await SearchResult.getResult(e.trainType, e.from, e.to)
+
         });
 
         it('Kontrola dát - Od, Do, Dátum, Čas', async () => {
@@ -56,7 +65,7 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
         it('Voľba lístka - výber miestenky', async () => {
             await TicketSelection.nextBtn_2_3.waitForDisplayed({ timeout: 60000, })
             //Výber miestenky
-            await Reservations.selectReservation(e.from, e.to, e.classNumber, e.reservation,)
+            await Reservations.selectReservation(e.from, e.to, e.classNumber, e.reservation, e.MCDtype)
 
             //Nie je daný typ miestenky - Vyhľadávanie znova
             while (!isTicketClass || !isTicketReservation) {
@@ -67,7 +76,7 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
                 await OrderPassengers.addOrderToPassenger(e.dog, e.baggage, e.bicycle)
                 await TicketSelection.nextBtn_2_3.waitForDisplayed({ timeout: 60000, })
                 //Výber miestenky
-                await Reservations.selectReservation(e.from, e.to, e.classNumber, e.reservation,)
+                await Reservations.selectReservation(e.from, e.to, e.classNumber, e.reservation, e.MCDtype)
             }
         });
 
@@ -82,9 +91,11 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
         await Payment.payByCart("4056070000000016", "12", "23")
     });
 
-    it('Kontrola dokladov', async () => {
+   it('Kontrola dokladov', async () => {
         console.log("----------------------- " + await trainDataArray[0]);
         console.log("----------------------- " + trainDataArrayMock[0]);
         await CheckTickets.CheckTicket(MCD_8_1, trainDataArray)
+        allureReporter.endStep('passed')
+
     });
 });

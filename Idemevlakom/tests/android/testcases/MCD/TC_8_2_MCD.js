@@ -8,10 +8,14 @@ import Payment from "../../Methods/Payment";
 import Reservations from "../../Methods/Reservations";
 import Search from "../../Methods/Search";
 import TicketSelection from "../../Methods/TicketSelection";
+const allureReporter = require('@wdio/allure-reporter').default
 
-describe('Nákup 1 MCD lístka pre 6 cestujúcich', () => {
+
+describe('TC 8.1 - Nákup 1 MCD pre 6 cestujúcich, rôzne zľavové kategórie', () => {
     it('Otvorenie app',async () => {
         await OpenApp.restarteApp()
+        allureReporter.addDescription('TC 8.2')
+
         
     });
 

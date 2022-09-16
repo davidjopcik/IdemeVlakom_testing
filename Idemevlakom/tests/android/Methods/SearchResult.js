@@ -1,4 +1,4 @@
-import Search from "./Search"
+import Search, { isResultUp } from "./Search"
 import Swipe from "./Swipe"
 
 export let trainTypeName = ""
@@ -61,6 +61,7 @@ class SearchResult {
         //Ak nenašiel stanicu a zobrazil sa snackbar
         if (!await this.searchResultSumary.isDisplayed()) {
             await Search.search(from, to, trainType)
+            isResultUp = false
         }
         else {
             await this.text_odchod.waitForDisplayed({ timeout: 20000 })
@@ -68,7 +69,6 @@ class SearchResult {
        
         trainTypeName = await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/a_search_results_item_train_types" and contains(@text, "' + trainType + '")]')
         while (!await trainTypeName.isDisplayed()) {
-            console.log("-------------------- SOM TU");
             await this.SearchResultTrain()
         }
 

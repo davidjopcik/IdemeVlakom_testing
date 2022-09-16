@@ -1,10 +1,8 @@
 import { UsersData_0_0 } from "../Data/TC_0_0_BuyFlow";
 import { trainDataArrayMock } from "../Data/trainDataArrayMock";
 import AddPassenger from "../Methods/AddPassenger";
-import Assertions from "../Methods/Assertions";
 import CheckTickets, { trainFrom, trainDataArray, trainDataCheck } from "../Methods/CheckTickets";
 import CreateAccount from "../Methods/CreateAccount";
-import HomeScreen from "../Methods/HomeScreen";
 import OpenApp from "../Methods/OpenApp";
 import OrderPassengers from "../Methods/OrderPassengers";
 import Payment from "../Methods/Payment";
@@ -16,13 +14,10 @@ import ShoppingCart from "../Methods/ShoppingCart";
 import Swipe from "../Methods/Swipe";
 import TicketSelection from "../Methods/TicketSelection";
 
+export let UserData = UsersData_0_0
 
 
 describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktuálne cesty"', () => {
-
-    xit('browser', async () => {
-        browser.url('https://ebay.com')
-    });
 
     it('otvorenie app', async () => {
         await OpenApp.restarteApp()
@@ -33,7 +28,7 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
         //await CreateAccount.createAccount("Peter", "Pavol", "david.jopcik@gmail.com", "dospely_26_61", "Bez zľavy")
     });
 
-    for (let e of UsersData_0_0) {
+    for (let e of UserData) {
         it('Pridanie cesty pri viacerých cestujúcich ' + e.from + e.to + ' ', async () => {
             while (await Payment.toPayBottomSelector.isDisplayed()) {
                 await ShoppingCart.AddWay()
@@ -116,7 +111,7 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
     it('Kontrola dokladov', async () => {
         console.log("----------------------- " + await trainDataArray[0]);
         console.log("----------------------- " + trainDataArrayMock[0]);
-        await CheckTickets.CheckTicket(UsersData_0_0, trainDataArray)
+        await CheckTickets.CheckTicket(UserData, trainDataArray)
         
 
     });

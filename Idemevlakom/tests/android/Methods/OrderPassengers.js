@@ -80,7 +80,7 @@ class OrderPassenger {
 
     async addOrderToPassengerNextStep(dog, baggage, bicycle){
         await TicketSelection.nextBtn_1_3.click()
-        await TicketSelection.nextBtn_2_3.waitForDisplayed({ timeout: 40000 })
+        await TicketSelection.nextBtn_2_3.waitForDisplayed({ timeout: 120000 })
         await FailsErrors.nextBtn1_3_Err()
         
 

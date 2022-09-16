@@ -1,18 +1,19 @@
 export const MCD_8_1 = [
-     {
+    {
         from: "Bratislava hl.st.",
         to: "Praha hl.n.",
         trainType: "EC ",
         name: "Drahoslava", lastname: "Zelenayová",
         ageCategory: "mlady_16_25",
-        MCDtype: "EUROPA STANDARD",
+        MCDtype: "EUROPA EXPRES",
         classNumber: "1. TRIEDA",
-        reservation: "bez miestenky",
+        reservation: "miestenka",
         discountCategory: "JUNIOR RAILPLUS",
         freeShipping: false,
         registrationNumber: ""
     },  
-    /* {
+    
+    {
         from: "Žilina",
         to: "Kolín",
         trainType: "R ",
@@ -24,7 +25,7 @@ export const MCD_8_1 = [
         discountCategory: "MAXI KLASIK",
         freeShipping: false,
         registrationNumber: ""
-    }, */
+    },
    
     {
         from: "Čadca",
@@ -32,7 +33,7 @@ export const MCD_8_1 = [
         trainType: "Os ",
         name: "Radovan", lastname: "Malina",
         ageCategory: "dospely_62_69",
-        MCDtype: "EUROPA EXPRES",
+        MCDtype: "EUROPA STANDARD",
         classNumber: "2. TRIEDA",
         reservation: "bez miestenky",
         discountCategory: "Preukaz ŤZP",
@@ -40,19 +41,19 @@ export const MCD_8_1 = [
         registrationNumber: ""
     },
      
-    /* {
-        from: "Trnava",
-        to: "Wien",
+     {
+        from: "Bratislava-Petržalka",
+        to: "Wien Hbf",
         trainType: "REX ",
         name: "Róbert", lastname: "Mikloško",
         ageCategory: "dospely_70",
         MCDtype: "WIEN TICKET",
         classNumber: "2. TRIEDA",
-        reservation: "bez miestenky",
+        reservation: "bez miestenky - spiatočný",
         discountCategory: "Preukaz pre občana od 70 r.",
         freeShipping: false,
         registrationNumber: ""
-    }, */
+    }, 
    
     {
         from: "Hodonín",
@@ -67,21 +68,21 @@ export const MCD_8_1 = [
         freeShipping: false,
         registrationNumber: ""
     },
-     
+      
     {
         from: "Český Těšín",
         to: "Žilina",
         trainType: "R ",
         name: "Hilda", lastname: "Ondrišová",
         ageCategory: "dieta_6_15",
-        MCDtype: "MPS",
+        MCDtype: "EUROPA REGIONAL",
         classNumber: "2. TRIEDA",
         reservation: "bez miestenky",
         discountCategory: "Preukaz pre dieťa do 16 r.",
         freeShipping: false,
         registrationNumber: ""
     }
-    
+     
     
 ]
     

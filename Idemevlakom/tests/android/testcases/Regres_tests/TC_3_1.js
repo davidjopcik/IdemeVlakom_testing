@@ -11,13 +11,16 @@ import Search from "../../Methods/Search";
 import SearchResult from "../../Methods/SearchResult";
 import ShoppingCart from "../../Methods/ShoppingCart";
 import TicketSelection from "../../Methods/TicketSelection";
+const allureReporter = require('@wdio/allure-reporter').default
+
 
 export let classSelectorExist = ""
 
-describe('TC 3.1 - 6 lístkov, 6 cestujúcich, rôzne zľavové kategórie', () => {
+describe('TC 3.1 - Nákup 6 lístkov pre 6 cestujúcich, rôzne zľavové kategórie', () => {
 
     it('Otvorenie/reštartovanie app', async () => {
         await OpenApp.restarteApp()
+        allureReporter.addDescription('TC 3.1')
     });
     it('Odstránenie užívateľa ak je prihlásený', async () => {
         await CreateAccount.removeAccount()
@@ -31,7 +34,7 @@ describe('TC 3.1 - 6 lístkov, 6 cestujúcich, rôzne zľavové kategórie', () 
         });
 
         it('Vyľadanie spojenie', async () => {
-            await Search.search(e.from, e.to, 3)
+            await Search.search(e.from, e.to, 2)
         });
 
         it('Výber konkrétneho spojenia', async () => {

@@ -1,13 +1,14 @@
 import { user_empty, user_invalid, user_valid_Jan, user_valid_Peter } from "../../Data/TC1_LoginUsers";
 import { default as CreateAccount } from "../../Methods/CreateAccount";
-import { default as HomeScreen } from "../../Methods/HomeScreen";
 import { default as OpenApp } from "../../Methods/OpenApp";
-import { default as Swipe } from "../../Methods/Swipe";
+import allureReporter from '@wdio/allure-reporter'
 
 describe('Sign in with valid/invalid data in Local Acoount', () => {
 
     it('Otvorenie app', async () => {
         await OpenApp.restarteApp()
+        allureReporter.addDescription('TC 1')
+
     });
 
     it('TC 1.1 Vytvorenie užívateľa s nevalidným menom', async () => {

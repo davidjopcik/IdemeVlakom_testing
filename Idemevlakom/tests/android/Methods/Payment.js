@@ -33,6 +33,11 @@ class Payment {
 
 
     async payByCart(numberOfCard, expiryMonth, expiryYear) {
+        if(!await this.toPayBottomSelector.isEnabled()){
+            expect($('//*[@resource-id="sk.zssk.mobapp.android.dev:id/textinput_error" and contains(@text, "Vyplňte e-mail")]')).toBeDisplayed()
+            await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_shopping_cart_email_email"]').setValue('david.jopcik@gmail.com')
+            await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_shopping_cart_email_wrapper_remember_me"]').click()
+        }
         await this.toPayBottomSelector.waitForDisplayed()
         await this.toPayBottomSelector.click()
         
@@ -62,7 +67,6 @@ class Payment {
         await HomeScreen.DrawerTicketCurrent.click()
 
     }
-
 
 
     async payByCartRealDevice() {

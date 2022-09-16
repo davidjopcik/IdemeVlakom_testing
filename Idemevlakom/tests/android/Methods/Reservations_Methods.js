@@ -20,12 +20,17 @@ class ReservationsMethods {
     get MCDTypeSelector() {
         return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/a_base_order_segment_group_pricing_item_pricing_product_type"]')
     }
+    get MCDTypeBtnSelector() {
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/a_base_order_segment_group_pricing_item_select_pricing_type_button"]')
+    }
+    
 
         ///////////FUNCTIONS & METHODS///////////////
 
     //Výber MCD typu lístka
     async selectMCD(MCDType){
-        if (MCDType !== ("" || undefined)) {
+
+        if ((MCDType !== ("" || undefined)) && (await this.MCDTypeBtnSelector.isDisplayed())) {
             if (await this.MCDTypeSelector.getText() !== MCDType) {
                 await this.MCDTypeBtnSelector.click()
                 expect($('//*[@text="Vyberte si ponuku"]')).toBeDisplayed()

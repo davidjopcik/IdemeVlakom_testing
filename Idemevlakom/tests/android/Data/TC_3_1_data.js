@@ -1,5 +1,5 @@
 export const UsersData_3_1 = [
-   /*  {
+    {
         from: "Nové Zámky",
         to: "Štúrovo",
         trainType: "EC ",
@@ -40,7 +40,7 @@ export const UsersData_3_1 = [
         classNumber: "2. TRIEDA",
         reservation: "bez rezervácie",
         discountCategory: "Preukaz ŤZP",
-    }, */  
+    },
     {
         from: "Kysak",
         to: "Košice",

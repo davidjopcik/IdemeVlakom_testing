@@ -44,7 +44,7 @@ describe('TC 8.1 - Nákup 6 MCD pre 6 cestujúcich, rôzne zľavové kategórie'
         });
 
         it('Výber konkrétneho spojenia', async () => {
-            await SearchResult.getResult(e.trainType, e.from, e.to)
+            await SearchResult.getResult(e.trainType, e.from, e.to, e.transfers)
 
         });
 
@@ -69,7 +69,7 @@ describe('TC 8.1 - Nákup 6 MCD pre 6 cestujúcich, rôzne zľavové kategórie'
 
             //Nie je daný typ miestenky - Vyhľadávanie znova
             while (!isTicketClass || !isTicketReservation) {
-                await SearchResult.getResult(e.trainType, e.from, e.to)
+                await SearchResult.getResult(e.trainType, e.from, e.to, e.transfers)
                 await CheckTickets.ChecktrainTimeDate(e, e.from, e.to)
                 await AddPassenger.addPassengerName(e.name, e.lastname, e.ageCategory, e.discountCategory, e.freeShipping, e.registrationNumber)
                 await TicketSelection.nextBtn_1_3.waitForDisplayed({ timeout: 60000, })

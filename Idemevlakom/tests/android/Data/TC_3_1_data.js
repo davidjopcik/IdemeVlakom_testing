@@ -8,7 +8,7 @@ export const UsersData_3_1 = [
         classNumber: "2. TRIEDA",
         reservation: "bez miestenky",
         discountCategory: "Preukaz pre žiaka/študenta",
-        freeShipping: false,
+        freeShipping: true,
         registrationNumber: "19359",
     },  
     {

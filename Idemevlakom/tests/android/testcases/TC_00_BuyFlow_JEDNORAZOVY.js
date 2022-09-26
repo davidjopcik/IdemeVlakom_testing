@@ -45,7 +45,7 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
 
 
         it('Výber konkrétneho spojenia', async () => {
-            await SearchResult.getResult(e.trainType, e.from, e.to)
+            await SearchResult.getResult(e.trainType, e.from, e.to, e.transfers)
         });
 
         it('Kontrola dát - Od, Do, Dátum, Čas', async () => {

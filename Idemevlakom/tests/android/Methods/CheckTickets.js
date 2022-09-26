@@ -71,8 +71,6 @@ class CheckTickets {
         await this.PushDataToTrainDataArray(userData)
     }
 
-
-
     async PushDataToTrainDataArray(userData) {
         //Vytvorenie objektu s dátami z obrazovky
         trainDataCheck = {}
@@ -190,13 +188,6 @@ class CheckTickets {
             currentItemTimeDate = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView[1]')
             await Swipe.swipeElement0nTopActualWay(await currentItemTimeDate)
 
-
-
-
-
-
-
-
              let counter = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[' + index + ']/android.view.ViewGroup/android.widget.TextView[1]')
             let numberOfItems = 0
             while(await counter.isDisplayed()){  
@@ -205,9 +196,6 @@ class CheckTickets {
                 counter = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[' + index + ']/android.view.ViewGroup/android.widget.TextView[1]')
             } 
             
-
-
-
 
             for (indexOfDates = 1; indexOfDates < 5; indexOfDates++) {
                 currentItemTimeDate = await $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[' + indexOfDates + ']/android.view.ViewGroup/android.widget.TextView[1]')

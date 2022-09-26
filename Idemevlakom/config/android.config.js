@@ -1,13 +1,24 @@
 import { config } from './test-configIVM';
 import { deviceName as _deviceName } from './android.info';
+const path = require('path')
 
 
+config.capabilities = [
+    
+    {
+    // ---- IOS ----
+   /*  "appium:platformName": "ios",
+    "appium:automationName": "XCUITest", 
+    "appium:deviceName": "iPhone 14",
+    "appium:app": path.join(process.cwd(), "./Idemevlakom/app/ios/"),  */
+    
 
-config.capabilities = [{
-    platformName: "Android",
-    automationName: "UiAutomator2",
-    maxInstance: 1,
-    deviceName: _deviceName,
+    // ---- ANDROID ----
+    "appium:platformName": "Android",
+    "appium:automationName": "UiAutomator2", 
+    "apiium:deviceName": _deviceName,
+    "appium:maxInstance": 1,
+   
     //"appium:platformVersion": "8",
     //"appium:deviceName": "Pixel 4 API Tiramisu",
     //"appium:deviceName": "Android Device",
@@ -18,13 +29,13 @@ config.capabilities = [{
     specs: [
 
         // ---- LOGIN TESTS -----
-        //"Idemevlakom/tests/android/testcases/Logins/TC1_LoginLocalUser.js",
+        "Idemevlakom/tests/android/testcases/Logins/TC1_LoginLocalUser.js",
 
         // ---- REGRES TESTS ----
-        'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_1.js',
-        'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_2.js',
+        //'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_1.js',
+        /* 'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_2.js',
         'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_3.js',
-        'Idemevlakom/tests/android/testcases/MCD/TC_8_1_MCD.js',
+        'Idemevlakom/tests/android/testcases/MCD/TC_8_1_MCD.js', */
 
 
         // ---- MCD Tickets TESTS ----
@@ -43,6 +54,10 @@ config.capabilities = [{
         //'Idemevlakom/tests/android/testcases/SpecTests/SoldOutBaggage.js',
         //'Idemevlakom/tests/android/testcases/MCD/TC_8_1_MCD.js',
         //'Idemevlakom/tests/android/testcases/MCD/TC_8_2_MCD.js',
+
+        // ---- IOS ----
+        //'Idemevlakom/tests/ios/testcases/test.js',
+
 
 
 

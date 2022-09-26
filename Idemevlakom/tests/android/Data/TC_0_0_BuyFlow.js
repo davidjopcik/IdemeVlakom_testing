@@ -1,14 +1,16 @@
 export const UsersData_0_0 = [
     {
-        from: "Vrbovce",
-        to: "Lipov ",
-        trainType: "Os ",
+        from: "Bratislava hl.st.",
+        to: "Praha hl.n.",
+        trainType: "EC ",
+        transfers: "bez prestupov",
         name: "Peter", lastname: "Lipovy",
         ageCategory: "mlady_16_25",
         discountCategory: "Bez zľavy",
         classNumber: "2. TRIEDA",
-        reservation:  "miestenka -spiatočný",
-
+        MCDtype: "EUROPA REGIONAL",
+        dog: "",
+        reservation:  "bez miestenky - spiatočný",
         freeShipping: false,
         registrationNumber: "",
     },  

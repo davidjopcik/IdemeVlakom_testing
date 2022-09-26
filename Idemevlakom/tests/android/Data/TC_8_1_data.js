@@ -4,6 +4,7 @@ export const MCD_8_1 = [
         to: "Praha hl.n.",
         trainType: "EC ",
         name: "Drahoslava", lastname: "Zelenayová",
+        transfers: "bez prestupov",
         ageCategory: "mlady_16_25",
         MCDtype: "EUROPA EXPRES",
         classNumber: "1. TRIEDA",

@@ -1,8 +1,16 @@
 
-exports.config = {
+export const config = {
     runner: "local",
     port: 4723,
-    //services: ['appium'],
+    services: [
+        ['appium', {
+        args:{
+            adress: 'localhost',
+            port:4723
+        },
+        logPath: './'
+    }],
+    ],
     appium: {
         command: 'appium',
         args: {},
@@ -26,7 +34,7 @@ exports.config = {
             'allure', {
                 outputDir: './reports/allure/allure-results',
                 disableWebdriverStepsReporting: true,
-                disableWebdriverScreenshotsReporting: true,
+                disableWebdriverScreenshotsReporting: false,
             }
         ], [
             'json', {
@@ -34,5 +42,12 @@ exports.config = {
             }
         ] 
     ],
+
+    /* afterStep: async function (step, scenario, { error, duration, passed }, context) {
+        if (error) {
+          await browser.takeScreenshot();
+        }
+      }, */
+
 
 }

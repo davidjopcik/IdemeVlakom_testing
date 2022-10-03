@@ -14,7 +14,7 @@ export const UsersData_3_1 = [
     {
         from: "Spišská Nová Ves",
         to: "Trenčín",
-        trainType: "R " ,
+        trainType: "R 602" ,
         name: "Peter", lastname: "Malý",
         ageCategory: "dospely_26_61",
         classNumber: "2. TRIEDA",

@@ -29,13 +29,13 @@ config.capabilities = [
     specs: [
 
         // ---- LOGIN TESTS -----
-        "Idemevlakom/tests/android/testcases/Logins/TC1_LoginLocalUser.js",
+        //"Idemevlakom/tests/android/testcases/Logins/TC1_LoginLocalUser.js",
 
         // ---- REGRES TESTS ----
-        //'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_1.js',
-        /* 'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_2.js',
-        'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_3.js',
-        'Idemevlakom/tests/android/testcases/MCD/TC_8_1_MCD.js', */
+        'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_1.js',
+        //'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_2.js',
+        //'Idemevlakom/tests/android/testcases/Regres_tests/TC_3_3.js',
+        //'Idemevlakom/tests/android/testcases/MCD/TC_8_1_MCD.js', 
 
 
         // ---- MCD Tickets TESTS ----

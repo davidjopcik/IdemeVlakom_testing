@@ -23,7 +23,7 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
         await OpenApp.restarteApp()
     });
 
-    it('Odstránenie užívateľa ak je prihlásený', async () => {
+    xit('Odstránenie užívateľa ak je prihlásený', async () => {
         await CreateAccount.removeAccount()
         //await CreateAccount.createAccount("Peter", "Pavol", "david.jopcik@gmail.com", "dospely_26_61", "Bez zľavy")
     });
@@ -100,9 +100,14 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
 
     }
 
-    it('Platba kartou', async () => {
+    xit('Platba kartou', async () => {
         await Payment.payByCart("4056070000000016", "12", "23")
     });
+
+    it.only('Platba kreditom', async () => {
+        await Payment.payByCredit()
+    });
+
 
     it('test', async () => {
         await Swipe.swipeToLeft()

@@ -6,6 +6,9 @@ class Payment {
     get payByCartIconSelector() {
         return $('//*[@text="Platba kartou"]')
     }
+    get payByCreditSelector() {
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/bsdf_payment_method_item_title"]')
+    }
     get payByGooglePayIconSelector() {
         return $('//*[@text="Google Pay"]')
     }
@@ -29,6 +32,45 @@ class Payment {
     }
     get paymentGateRealDeviceScreen(){
         return $('//*[@class="android.widget.FrameLayout"]')
+    }
+    get paymentCreditCodeTitile() {
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_payment_otp_title"]')
+    }
+    get paymentCreditInsertPin() {
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_payment_otp_view"]')
+    }
+    get paymentCreditConfirmBtn() {
+        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_payment_otp_verification_confirm_button"]')
+    }
+    
+
+    
+    async payByCredit(){
+        if(!await this.toPayBottomSelector.isEnabled()){
+            expect($('//*[@resource-id="sk.zssk.mobapp.android.dev:id/textinput_error" and contains(@text, "Vyplňte e-mail")]')).toBeDisplayed()
+            await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_shopping_cart_email_email"]').setValue('david.jopcik@gmail.com')
+            await $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/f_shopping_cart_email_wrapper_remember_me"]').click()
+        }
+        await this.toPayBottomSelector.waitForDisplayed()
+        await this.toPayBottomSelector.click()
+
+        await this.payByCreditSelector.waitForDisplayed()
+        await this.payByCreditSelector.click()
+        await this.toPayBottomSelector.click()
+
+        await this.paymentCreditCodeTitile.waitForDisplayed()
+        await this.paymentCreditInsertPin.click()
+
+        await browser.pause(500)
+        await driver.pressKeyCode(8)   //1
+        await browser.pause(500)
+        await driver.pressKeyCode(9)   //2
+        await browser.pause(500)
+        await driver.pressKeyCode(10)   //3
+        await browser.pause(500)
+        await driver.pressKeyCode(11)   //4
+        await browser.pause(500)
+
     }
 
 
@@ -119,6 +161,8 @@ class Payment {
         await browser.pause(500)
         await driver.pressKeyCode(13)   //6
         await browser.pause(500)
+
+        await this.paymentCreditConfirmBtn.click()
     }
 
     async cardValidMonthInputFill() {

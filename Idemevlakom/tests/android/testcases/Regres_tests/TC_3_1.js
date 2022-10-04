@@ -22,7 +22,7 @@ describe('TC 3.1 - Nákup 6 lístkov pre 6 cestujúcich, rôzne zľavové kateg�
         await OpenApp.restarteApp()
         allureReporter.addDescription('TC 3.1')
     });
-    it('Odstránenie užívateľa ak je prihlásený', async () => {
+    xit('Odstránenie užívateľa ak je prihlásený', async () => {
         await CreateAccount.removeAccount()
     });
 
@@ -79,8 +79,12 @@ describe('TC 3.1 - Nákup 6 lístkov pre 6 cestujúcich, rôzne zľavové kateg�
         });
     }
 
-    it('Platba kartou', async () => {
+    xit('Platba kartou', async () => {
         await Payment.payByCart("4056070000000016", "12", "23")
+    });
+
+    it('Platba kreditom', async () => {
+        await Payment.payByCredit()
     });
 
     it('Kontrola dokladov', async () => {

@@ -104,7 +104,7 @@ describe(' Nákup JEDNORAZOVÉHO líska a kontrola vygenerovania do sekcie "Aktu
         await Payment.payByCart("4056070000000016", "12", "23")
     });
 
-    it.only('Platba kreditom', async () => {
+    it('Platba kreditom', async () => {
         await Payment.payByCredit()
     });
 

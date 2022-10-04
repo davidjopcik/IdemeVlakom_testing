@@ -19,7 +19,7 @@ describe('TC 8.1 - Nákup 1 MCD pre 6 cestujúcich, rôzne zľavové kategórie'
         
     });
 
-    it('Odstránenie užívateľa',async () => {
+    xit('Odstránenie užívateľa',async () => {
         await CreateAccount.removeAccount()
     });
 
@@ -58,9 +58,13 @@ describe('TC 8.1 - Nákup 1 MCD pre 6 cestujúcich, rôzne zľavové kategórie'
     });
     
 
-    it('Platba kartou', async () => {
+    xit('Platba kartou', async () => {
         await Payment.payByCart("4056070000000016", "12", "23")
     })
+
+    it('Platba kreditom', async () => {
+        await Payment.payByCredit()
+    });
 
     xit('Kontrola dokladov', async () => {
         //expect(currentItemTimeDate).toBeDisplayed()

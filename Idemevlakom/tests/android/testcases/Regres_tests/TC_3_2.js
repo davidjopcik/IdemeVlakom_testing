@@ -25,7 +25,7 @@ describe('TC 3.2 - Nákup 1 lístka pre 6 cestujúcich, rôzne zľavové kategó
 
     });
 
-    it('Odstránenie užívateľa ak je prihlásený', async () => {
+    xit('Odstránenie užívateľa ak je prihlásený', async () => {
         await CreateAccount.removeAccount()
     });
 
@@ -71,7 +71,7 @@ describe('TC 3.2 - Nákup 1 lístka pre 6 cestujúcich, rôzne zľavové kategó
         while (!isTicketClass || !isTicketReservation) {
             console.log("----------------------- " + await trainDataArray[0]);
 
-            for(let k = 1; k<numberOfPushes; k++){
+            for (let k = 1; k < numberOfPushes; k++) {
                 await trainDataArray.pop()
             }
             console.log("----------------------- " + await trainDataArray[0]);
@@ -79,7 +79,7 @@ describe('TC 3.2 - Nákup 1 lístka pre 6 cestujúcich, rôzne zľavové kategó
             await SearchResult.getResult(e.trainType, e.from, e.to)
             await CheckTickets.ChecktrainTimeDateOnly(e, e.from, e.to)
             for (let e of UsersData_TC_3_2) {
-                
+
                 await AddPassenger.addPassengerName(e.name, e.lastname, e.ageCategory, e.discountCategory, e.freeShipping, e.registrationNumber)
                 await TicketSelection.nextBtn_1_3.waitForDisplayed({ timeout: 60000, })
 
@@ -94,25 +94,29 @@ describe('TC 3.2 - Nákup 1 lístka pre 6 cestujúcich, rôzne zľavové kategó
         }
     });
 
-    
-   
-   
-       it('Voľba lístka - pokračovanie', async () => {
-           await TicketSelection.nextBtn_2_3.click()
-   
-           await TicketSelection.nextBtn_3_3.waitForDisplayed({ timeout: 60000 })
-           await TicketSelection.nextBtn_3_3.click()
-       });
-   
-       it('Platba kartou', async () => {
-           await Payment.payByCart("4056070000000016", "12", "23")
-       });
-   
-       it('Kontrola dokladov', async () => {
-           console.log("----------------------- " + await trainDataArray[0]);
-           console.log("----------------------- " + trainDataArrayMock[0]);
-           await CheckTickets.CheckTicket(UsersData_TC_3_2, trainDataArray)
-   
-   
-       }); 
+
+
+
+    it('Voľba lístka - pokračovanie', async () => {
+        await TicketSelection.nextBtn_2_3.click()
+
+        await TicketSelection.nextBtn_3_3.waitForDisplayed({ timeout: 60000 })
+        await TicketSelection.nextBtn_3_3.click()
+    });
+
+    xit('Platba kartou', async () => {
+        await Payment.payByCart("4056070000000016", "12", "23")
+    });
+
+    it('Platba kreditom', async () => {
+        await Payment.payByCredit()
+    });
+
+    it('Kontrola dokladov', async () => {
+        console.log("----------------------- " + await trainDataArray[0]);
+        console.log("----------------------- " + trainDataArrayMock[0]);
+        await CheckTickets.CheckTicket(UsersData_TC_3_2, trainDataArray)
+
+
+    });
 });

@@ -7,7 +7,7 @@ class Payment {
         return $('//*[@text="Platba kartou"]')
     }
     get payByCreditSelector() {
-        return $('//*[@resource-id="sk.zssk.mobapp.android.dev:id/bsdf_payment_method_item_title"]')
+        return $('//*[@text="Platba kreditom"]')
     }
     get payByGooglePayIconSelector() {
         return $('//*[@text="Google Pay"]')
@@ -70,6 +70,13 @@ class Payment {
         await browser.pause(500)
         await driver.pressKeyCode(11)   //4
         await browser.pause(500)
+
+        await this.paymentCreditConfirmBtn.click()
+
+        await this.paymentFinishedSelector.waitForDisplayed({ timeout: 60000 })
+        await this.paymentFinishedSelector.click()
+        await HomeScreen.navPanel.click()
+        await HomeScreen.DrawerTicketCurrent.click()
 
     }
 

@@ -46,8 +46,12 @@ describe('TC 3.3 - Nákup 1 traťového lístka', () => {
         await TicketSelection.nextBtn_3_3.click()
     });
 
-    it('Platba kartou', async () => {
+    xit('Platba kartou', async () => {
         await Payment.payByCart("4056070000000016", "12", "23")
+    });
+
+    it('Platba kreditom', async () => {
+        await Payment.payByCredit()
     });
 
     it('Kontrola dokladov', async () => {

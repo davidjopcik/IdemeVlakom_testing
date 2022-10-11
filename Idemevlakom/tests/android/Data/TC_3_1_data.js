@@ -19,7 +19,7 @@ export const UsersData_3_1 = [
         ageCategory: "dospely_26_61",
         classNumber: "2. TRIEDA",
         reservation: "miestenka (OZP miesto)",
-        discountCategory: "KLASIK RAILPLUS",
+        discountCategory: "KLASIK",
     },  
     {
         from: "Veľký Šariš",

@@ -5,6 +5,7 @@ export let trainTypeName
 export let orderTrainName = ""
 export let trainToSelectResult
 export let findResult = false
+
 class SearchResult {
 
     get text_odchod() {

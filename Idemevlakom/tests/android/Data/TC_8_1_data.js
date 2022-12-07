@@ -2,7 +2,7 @@ export const MCD_8_1 = [
     {
         from: "Bratislava hl.st.",
         to: "Praha hl.n.",
-        trainType: "EC ",
+        trainType: "EC 2",
         name: "Drahoslava", lastname: "Zelenayová",
         transfers: "bez prestupov",
         ageCategory: "mlady_16_25",

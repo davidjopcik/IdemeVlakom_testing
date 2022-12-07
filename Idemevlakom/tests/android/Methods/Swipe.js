@@ -2,7 +2,7 @@ import getWindowSize from "webdriverio/build/commands/browser/getWindowSize"
 
 class Swipe {
     async swipeUp() {
-        browser.touchPerform([
+        await browser.touchPerform([
             {
                 action: 'press',
                 options: {
@@ -73,40 +73,27 @@ class Swipe {
         const swipeTo = (await browser.getWindowSize()).height * 0.55
         const anchor = (await browser.getWindowSize()).width * 0.5
 
-
-        console.log("--------------- " + swipeFrom);
-        console.log("--------------- " + swipeTo);
-        console.log("--------------- " + anchor);
-
-
         driver.touchPerform([
-            {
-                action: 'press',
-                options: { x: anchor, y: swipeFrom }
-            },
-            {
-                action: 'wait',
-                options: {
-                    ms: 300
-                }
-            },
-
-            {
-                action: 'moveTo',
-                options: { x: anchor, y: swipeTo }
-
-
-            },
-
-            {
-                action: 'release',
-                options: {
-                }
-            },
-
+            {action: 'press', options: { x: anchor, y: swipeFrom }},
+            {action: 'wait', options: {ms: 300}},
+            {action: 'moveTo', options: { x: anchor, y: swipeTo }},
+            {action: 'release', options: {}},
         ])
     }
 
+    async swipeUpWithKeaybord() {
+
+        const swipeFrom = (await browser.getWindowSize()).height * 0.5
+        const swipeTo = (await browser.getWindowSize()).height * 0.25
+        const anchor = (await browser.getWindowSize()).width * 0.5
+
+        driver.touchPerform([
+            {action: 'press', options: { x: anchor, y: swipeFrom }},
+            {action: 'wait', options: {ms: 300}},
+            {action: 'moveTo', options: { x: anchor, y: swipeTo }},
+            {action: 'release', options: {}},
+        ])
+    }
     async swipeUpMin() {
 
         const swipeFrom = (await browser.getWindowSize()).height * 0.6

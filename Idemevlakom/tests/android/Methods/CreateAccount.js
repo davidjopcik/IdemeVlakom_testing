@@ -99,6 +99,7 @@ class CreatAccount {
         await AddPassenger.ageCategorySelect(ageCategory)
         await this.createDiscountCategory.click()
         await AddPassenger.selectDiscountCategory(discountCtegory)
+    
         if(!await registryNumber == ""){
             await this.createRegistryNumber.setValue(registryNumber)
             await this.createRegistryNumberCheckBox.click()
@@ -130,6 +131,8 @@ class CreatAccount {
         if (await this.createLocalAccountBtn.isDisplayed()) {
             await HomeScreen.navigateUp.click()
         }
+        await browser.pause(1000
+        )
     }
 
     async createAccount(name, lastname, email, ageCategory, discountCtegory, registryNumber) {

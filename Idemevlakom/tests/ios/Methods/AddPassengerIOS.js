@@ -1,7 +1,6 @@
-import Swipe from "./Swipe"
-import SearchResult, { trainTypeName } from "./SearchResult"
-import PassengerCategories from "./PassengerCategories"
-import TicketSelection from "./TicketSelection"
+import Swipe from "../../android/Methods/Swipe"
+import SearchResult from "../../android/Methods/SearchResult"
+
 
 export let discountCategorySelector
 
@@ -97,22 +96,22 @@ class AddPassenger {
 
         switch (ageCategory) {
             case "dospely_26_61":
-                await PassengerCategories.dospely_26_61.click()
+                await $('//XCUIElementTypeOther[@name="drop_down"]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[4]').click()
                 break;
             case "dieta_0_5":
-                await PassengerCategories.dieta_0_5.click()
+                await ('//XCUIElementTypeOther[@name="drop_down"]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[1]').click()
                 break;
             case "dieta_6_15":
-                await PassengerCategories.dieta_6_15.click()
+                await ('//XCUIElementTypeOther[@name="drop_down"]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[2]').click()
                 break;
             case "mlady_16_25":
-                await PassengerCategories.mlady_16_25.click()
+                await ('//XCUIElementTypeOther[@name="drop_down"]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[3]').click()
                 break;
             case "dospely_62_69":
-                await PassengerCategories.dospely_62_69.click()
+                await ('//XCUIElementTypeOther[@name="drop_down"]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[5]').click()
                 break;
             case "dospely_70":
-                await PassengerCategories.dospely_70.click()
+                await ('//XCUIElementTypeOther[@name="drop_down"]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[6]').click()
                 break;
 
             default:
@@ -123,7 +122,8 @@ class AddPassenger {
 
     // Výber Zľavovej kategórie
     async selectDiscountCategory(discountCategory){
-        discountCategorySelector = await $('//*[@text="'+discountCategory+'"]')
+        discountCategorySelector = await $('//*[@label="'+discountCategory+'"]')
+        console.log("--------"+ await discountCategorySelector.getText());
         await discountCategorySelector.waitForDisplayed({timeout: 3000})
         if(!await discountCategorySelector.isDisplayed()){
             await discountCategorySelector.scrollIntoView()

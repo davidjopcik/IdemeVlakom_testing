@@ -22,6 +22,7 @@ export const config = {
         
     ],
 
+
     capabilities: [{
         "platformName": "Android",
         //"appium:platformVersion": "8",

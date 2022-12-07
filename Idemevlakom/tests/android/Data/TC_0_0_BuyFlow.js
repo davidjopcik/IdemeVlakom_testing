@@ -1,5 +1,5 @@
 export const UsersData_0_0 = [
-    {
+   /*  {
         from: "Bratislava hl.st.",
         to: "Praha hl.n.",
         trainType: "EC ",
@@ -13,8 +13,8 @@ export const UsersData_0_0 = [
         reservation:  "bez miestenky - spiatočný",
         freeShipping: false,
         registrationNumber: "",
-    },  
-    /*  {
+    },   */
+     {
         from: "Trenčín",
         to: "Bratislava hl.st.",
         trainType: "R " ,
@@ -26,7 +26,7 @@ export const UsersData_0_0 = [
         orderTimeFrom: ""
     },  
     
-    {
+    /* {
         from: "Veľký Šariš",
         to: "Ťahanovce",
         trainType: "Os ",
@@ -73,5 +73,5 @@ export const UsersData_0_0 = [
         reservation: "miestenka (ľahký prístup)",
         orderTimeFrom: ""
 
-    }  */
+    }   */
 ] 

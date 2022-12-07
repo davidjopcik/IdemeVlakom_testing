@@ -5,7 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "wdio Idemevlakom/config/android.config.js",
+    "android": "wdio Idemevlakom/config/android.config.js",
+    "regress-android": "wdio Idemevlakom/config/android.config.js",
+    "ios": "wdio Idemevlakom/config/ios.config.js",
+    "regress-ios": "wdio Idemevlakom/config/ios.config.js --suites login",
     "allure": "allure generate ./reports/allure/allure-results --clean && allure open ",
     "allure:history": "mkdir -p allure-report/history ./test/reports/allure-results/history && cp -a allure-report/history ./test/reports/allure-results/",
     "allure-report": "./node_modules/.bin/allure generate --clean ./test/reports/allure-results && allure open"
